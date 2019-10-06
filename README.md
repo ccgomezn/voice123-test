@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# voice123-test
+
+To run this project first run `yarn test`to see each test and then `yarn start`.
+
+
+# Worklog
+
+1. Create react project. 5 minutes
+2. Create searchBox component. 30 minutes
+4. Integrate with axios. 20 minutes
+3. Create table component. 30 minutes
+4. integrate everything. 2 hours
+5. Create simple tests. 1 hour
+
+# Future improvements and recommendations.
+- It's necessary to improve the esthetic of the prototype.
+- It's necessary to improve the tests.
+
+# YARN DOCUMENTATION
 
 ## Available Scripts
 
@@ -66,4 +85,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# voice123-test
