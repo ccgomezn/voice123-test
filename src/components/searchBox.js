@@ -26,21 +26,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function SearchBox() {
+function SearchBox(props) {
     const classes = useStyles();
 
     const [searchTest, setSearchText] = useState('');
 
 
-    const handleSubmit = (event) => {
-    };
+
 
     const handleChange = (value) => {
         setSearchText(value);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
             <Grid container>
                 <Grid item xs={12}>
                     <TextField

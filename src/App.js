@@ -13,7 +13,7 @@ function App() {
 
                 <Grid container>
                     <Grid item xs={4}>
-                        <SearchBox/>
+                        <SearchBox handleSubmit={(event) => console.log(event)}/>
                     </Grid>
 
                 </Grid>
