@@ -4,5 +4,5 @@ const baseUrl = 'https://api.sandbox.voice123.com/providers/search/?service=voic
 
 
 export function apiCall(searchText, page) {
-    return get(baseUrl + 'keywords=' + encodeURIComponent(searchText.trim()) + '&page=' + encodeURIComponent(page.trim()))
+    return get(baseUrl + 'keywords=' + encodeURIComponent(searchText.trim()) + '&page=' + encodeURIComponent(page))
 }

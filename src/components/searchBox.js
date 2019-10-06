@@ -29,15 +29,6 @@ const useStyles = makeStyles(theme => ({
 function SearchBox(props) {
     const classes = useStyles();
 
-    const [searchTest, setSearchText] = useState('');
-
-
-
-
-    const handleChange = (value) => {
-        setSearchText(value);
-    };
-
     return (
         <form onSubmit={props.handleSubmit}>
             <Grid container>
@@ -48,8 +39,8 @@ function SearchBox(props) {
                         className={clsx(classes.textField, classes.dense)}
                         margin="dense"
                         variant="outlined"
-                        value={searchTest}
-                        onChange={(event) => handleChange(event.target.value)}
+                        value={props.value}
+                        onChange={(event) => props.onChange(event.target.value)}
                     />
                     <Button variant="contained" color="primary" type="submit" className={clsx(classes.button)}>
                         Accept
