@@ -125,7 +125,7 @@ function TableCustom(props) {
         array_string.forEach(paragragh => {
             let aux_count = 0;
             array_search.forEach(word => {
-                if (word != "" && paragragh.toLowerCase().includes(word.toLowerCase())) aux_count++;
+                if (word !== "" && paragragh.toLowerCase().includes(word.toLowerCase())) aux_count++;
             });
             if(aux_count > count){
                 selected_paragraph = paragragh;
@@ -136,7 +136,7 @@ function TableCustom(props) {
         selected_paragraph.split(' ').forEach(word => {
             array_search.forEach(word_search => {
                 let regex = RegExp('^[^a-zA-Z]*'+word_search.toLowerCase()+'[^a-zA-Z]*$', 'g');
-                if (word.toLowerCase().match(regex)){
+                if ( word_search !== "" && word.toLowerCase().match(regex)){
                     definitive_paragraph += '<b>'+ word + ' </b>';
                 }
                 else{
@@ -194,11 +194,10 @@ function TableCustom(props) {
                 <TableRow>
                     <TablePagination
                         rowsPerPageOptions={[10]}
-                        colSpan={3}
+                        colSpan={12}
                         count={props.total}
                         rowsPerPage={10}
                         page={props.page}
-
                         onChangePage={props.onChangePage}
                         ActionsComponent={TablePaginationActions}
                     />

@@ -20,7 +20,6 @@ function App() {
             .then((response) => {
                 setData(response.data.providers);
                 setTotal(response.headers['x-list-total-rows'] !== "undefined" ? response.headers['x-list-total-rows'] : 0);
-                setFinalSearchText(searchText);
             });
     }, []);
 
@@ -81,9 +80,9 @@ function App() {
     return (
         <div className="App">
             <Container maxWidth="lg">
-                <Grid container spacing={3}>
+                <Grid container spacing={3} alignItems="flex-start" justify="flex-end">
 
-                    <Grid item xs={12} alignItems="flex-start" justify="flex-end">
+                    <Grid item xs={12} >
 
                         <Card>
 
@@ -103,7 +102,7 @@ function App() {
                                 <Grid item xs={12}>
                                     <TableCustom data={data} page={page} options={tableOptions} total={total}
                                                  onChangePage={(event, page) => handleChangePage(page)}
-                                                 searchText={finalSearchText}/>
+                                                 searchText={finalSearchText? finalSearchText: ''}/>
                                 </Grid>
 
                             </Grid>
