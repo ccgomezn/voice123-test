@@ -1,11 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import {Card, Container} from '@material-ui/core';
+import {Card, Container, CircularProgress, makeStyles} from '@material-ui/core';
 import SearchBox from "./components/searchBox";
 import Grid from "@material-ui/core/Grid";
 import {apiCall} from "./helpers/API/apiCalls";
 import TableCustom from "./components/table";
 
+
+const useStyles = makeStyles(theme => ({
+
+    buttonProgress: {
+        color: 'green',
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        marginTop: -12,
+        marginLeft: -12,
+    },
+}));
 
 function App() {
 
@@ -14,6 +26,10 @@ function App() {
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
     const [total, setTotal] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const classes = useStyles();
+
+
 
     useEffect(() => {
         apiCall('', 1)
@@ -38,16 +54,21 @@ function App() {
 
     const handleChangePage = (page) => {
         setPage(page);
+        setLoading(true);
         apiCall(searchText, page + 1).then((response) => {
             setData(response.data.providers);
+            setLoading(false);
+
         })
     };
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoading(true);
         apiCall(searchText, page + 1).then((response) => {
             setData(response.data.providers);
+            setLoading(false);
             setTotal(response.headers['x-list-total-rows'] !== "undefined" ? response.headers['x-list-total-rows']  : 0);
             setFinalSearchText(searchText);
         })
@@ -76,9 +97,13 @@ function App() {
             key: 'file'
         }
 
+
+
     ];
     return (
         <div className="App">
+            {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+
             <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="flex-start" justify="flex-end">
 
