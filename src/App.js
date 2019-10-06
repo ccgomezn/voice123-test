@@ -19,7 +19,7 @@ function App() {
         apiCall('', 1)
             .then((response) => {
                 setData(response.data.providers);
-                setTotal(response.headers['x-list-total-rows']);
+                setTotal(response.headers['x-list-total-rows'] !== "undefined" ? response.headers['x-list-total-rows'] : 0);
                 setFinalSearchText(searchText);
             });
     }, []);
@@ -49,7 +49,7 @@ function App() {
         event.preventDefault();
         apiCall(searchText, page + 1).then((response) => {
             setData(response.data.providers);
-            setTotal(response.headers['x-list-total-rows']);
+            setTotal(response.headers['x-list-total-rows'] !== "undefined" ? response.headers['x-list-total-rows']  : 0);
             setFinalSearchText(searchText);
         })
     };
@@ -83,15 +83,13 @@ function App() {
             <Container maxWidth="lg">
                 <Grid container spacing={3}>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} alignItems="flex-start" justify="flex-end">
 
                         <Card>
 
-                            <Grid container>
-                                <Grid item xs={4}>
-                                    <SearchBox handleSubmit={(event) => handleSubmit(event)} value={searchText}
-                                               onChange={(value) => handleChange(value, 'searchText')}/>
-                                </Grid>
+                            <Grid container alignItems="flex-start" justify="flex-end">
+                                <SearchBox handleSubmit={(event) => handleSubmit(event)} value={searchText}
+                                           onChange={(value) => handleChange(value, 'searchText')}/>
 
                             </Grid>
 

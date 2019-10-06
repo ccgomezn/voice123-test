@@ -198,10 +198,7 @@ function TableCustom(props) {
                         count={props.total}
                         rowsPerPage={10}
                         page={props.page}
-                        SelectProps={{
-                            inputProps: {'aria-label': 'rows per page'},
-                            native: true,
-                        }}
+
                         onChangePage={props.onChangePage}
                         ActionsComponent={TablePaginationActions}
                     />
