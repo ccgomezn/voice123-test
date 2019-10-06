@@ -1,7 +1,7 @@
 
 # voice123-test
 
-To run this project first run `yarn test`to see each test and then `yarn start`.
+To run this project first run `yarn ` to install dependencies, then `yarn test` to see each test and then `yarn start`.
 
 
 # Worklog
